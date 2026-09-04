@@ -239,7 +239,7 @@ module async_fifo #(
         wire [ADDR_WIDTH:0] rd_ptr_bin_next = rd_ptr_bin + (rd_en & !empty);
  
     always @(posedge rd_clk or posedge rd_rst) begin
-        if(wr_rst) {rd_ptr_bin, rd_ptr_gray} <= 0;
+        if(rd_rst) {rd_ptr_bin, rd_ptr_gray} <= 0;
         else begin
             rd_ptr_bin <= rd_ptr_bin + (rd_en & !empty);
             rd_ptr_gray <= (rd_ptr_bin_next >> 1) ^ rd_ptr_bin_next;
